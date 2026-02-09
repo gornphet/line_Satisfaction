@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>แบบประเมินความพึงพอใจต่อ LINE Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #fdf2f8; /* Pink-50 pastel */
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .radio-group input:checked + label {
+            background-color: #f472b6; /* Pink-400 */
+            color: white;
+            border-color: #f472b6;
+            box-shadow: 0 4px 6px -1px rgba(244, 114, 182, 0.4);
+        }
+        
+        .rating-group input:checked + label {
+            background-color: #818cf8; /* Indigo-400 */
+            color: white;
+            border-color: #818cf8;
+            transform: scale(1.1);
+            box-shadow: 0 4px 6px -1px rgba(129, 140, 248, 0.4);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        input, select, textarea {
+            font-size: 16px !important; 
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="text-slate-700 pb-24 bg-gradient-to-br from-pink-50 to-indigo-50 min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-t-4 border-pink-400 transition-all duration-300">
+        <div class="max-w-3xl mx-auto px-4 py-3 md:py-4 text-center">
+            <h1 class="text-lg md:text-2xl font-bold text-slate-800 leading-tight">แบบประเมินความพึงพอใจ<br class="md:hidden">ต่อ LINE Chatbot</h1>
+            <p class="text-xs md:text-sm text-slate-500 mt-1">กองการศึกษา เทศบาลตำบลหัวดง</p>
+        </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-4 mt-4 md:mt-6">
+        
+        <!-- คำอธิบาย -->
+        <div class="glass-panel rounded-2xl shadow-sm p-5 mb-4 text-center border-t-4 border-indigo-300">
+            <p class="text-indigo-600 text-lg font-bold mb-2">📢 คำชี้แจง</p>
+            <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                แบบประเมินนี้จัดทำขึ้นเพื่อพัฒนา LINE Chatbot กองการศึกษา เทศบาลตำบลหัวดง อ.ลับแล จ.อุตรดิตถ์
+                <br>
+                <span class="text-xs text-slate-400 mt-2 block">(ใช้มาตรวัด Likert Scale 5 ระดับ)</span>
+            </p>
+        </div>
+        
+        <!-- Form Start -->
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSchSs2EvJCh053Hm7HsttjJZ955tI_154aOIDEPeZZ9Pvnwpg/formResponse" 
+              method="POST" 
+              target="hidden_iframe" 
+              id="surveyForm"
+              accept-charset="UTF-8"
+              onsubmit="handleSubmit()">
+
+            <!-- Note: Removed pageHistory to let Google auto-detect sections -->
+
+            <!-- ส่วนที่ 1 -->
+            <div class="glass-panel rounded-2xl shadow-sm p-5 mb-4">
+                <div class="flex items-center gap-2 mb-4 border-b pb-2 border-pink-100">
+                    <span class="bg-pink-100 text-pink-600 px-2 py-1 rounded text-xs font-bold">ส่วนที่ 1</span>
+                    <h2 class="text-base font-semibold text-slate-800">ข้อมูลทั่วไป</h2>
+                </div>
+
+                <!-- 1. เพศ -->
+                <div class="mb-6">
+                    <label class="block mb-3 font-medium text-sm text-slate-600">1. เพศ <span class="text-red-400">*</span></label>
+                    <div class="grid grid-cols-3 gap-2 radio-group">
+                        <div class="relative">
+                            <input class="sr-only" type="radio" name="entry.1924788910" id="male" value="ชาย" required>
+                            <label class="block border border-slate-200 rounded-lg py-2.5 text-center cursor-pointer transition-all hover:bg-pink-50 text-sm" for="male">ชาย</label>
+                        </div>
+                        <div class="relative">
+                            <input class="sr-only" type="radio" name="entry.1924788910" id="female" value="หญิง">
+                            <label class="block border border-slate-200 rounded-lg py-2.5 text-center cursor-pointer transition-all hover:bg-pink-50 text-sm" for="female">หญิง</label>
+                        </div>
+                        <div class="relative">
+                            <input class="sr-only" type="radio" name="entry.1924788910" id="lgbt" value="ทางเลือก">
+                            <label class="block border border-slate-200 rounded-lg py-2.5 text-center cursor-pointer transition-all hover:bg-pink-50 text-sm" for="lgbt">ทางเลือก</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. อายุ -->
+                <div class="mb-6">
+                    <label class="block mb-3 font-medium text-sm text-slate-600">2. อายุ <span class="text-red-400">*</span></label>
+                    <div class="grid grid-cols-2 gap-2 radio-group">
+                        <div><input class="sr-only" type="radio" name="entry.549346719" id="age1" value="ต่ำกว่า 20 ปี" required><label class="block border border-slate-200 rounded-lg py-3 px-2 text-center cursor-pointer transition-all hover:bg-pink-50 text-sm" for="age1">ต่ำกว่า 20 ปี</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.549346719" id="age2" value="20 - 30 ปี"><label class="block border border-slate-200 rounded-lg py-3 px-2 text-center cursor-pointer transition-all hover:bg-pink-50 text-sm" for="age2">20 - 30 ปี</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.549346719" id="age3" value="31 - 40 ปี"><label class="block border border-slate-200 rounded-lg py-3 px-2 text-center cursor-pointer transition-all hover:bg-pink-50 text-sm" for="age3">31 - 40 ปี</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.549346719" id="age4" value="41 - 50 ปี"><label class="block border border-slate-200 rounded-lg py-3 px-2 text-center cursor-pointer transition-all hover:bg-pink-50 text-sm" for="age4">41 - 50 ปี</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.549346719" id="age5" value="51 - 60 ปี"><label class="block border border-slate-200 rounded-lg py-3 px-2 text-center cursor-pointer transition-all hover:bg-pink-50 text-sm" for="age5">51 - 60 ปี</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.549346719" id="age6" value="60 ปี ขึ้นไป"><label class="block border border-slate-200 rounded-lg py-3 px-2 text-center cursor-pointer transition-all hover:bg-pink-50 text-sm" for="age6">60 ปี ขึ้นไป</label></div>
+                    </div>
+                </div>
+
+                <!-- 3. สถานะ -->
+                <div class="mb-6">
+                    <label class="block mb-3 font-medium text-sm text-slate-600">3. สถานะ <span class="text-red-400">*</span></label>
+                    <div class="relative">
+                        <select name="entry.697976042" class="w-full p-3 border border-slate-200 rounded-xl bg-slate-50 focus:outline-none focus:ring-2 focus:ring-pink-300 appearance-none text-sm" required>
+                            <option value="" disabled selected>-- กรุณาเลือกสถานะ --</option>
+                            <option value="นักเรียน">นักเรียน</option>
+                            <option value="ผู้ปกครอง">ผู้ปกครอง</option>
+                            <option value="ประชาชนทั่วไป">ประชาชนทั่วไป</option>
+                            <option value="ข้าราชการ/พนักงานเทศบาล">ข้าราชการ/พนักงานเทศบาล</option>
+                        </select>
+                        <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. ระดับการศึกษา -->
+                <div class="mb-2">
+                    <label class="block mb-3 font-medium text-sm text-slate-600">4. ระดับการศึกษา <span class="text-red-400">*</span></label>
+                    <div class="flex flex-col gap-2 radio-group">
+                        <div><input class="sr-only" type="radio" name="entry.1457844502" id="edu1" value="ต่ำกว่าปริญญาตรี" required><label class="block border border-slate-200 rounded-lg px-4 py-3 cursor-pointer transition-all hover:bg-pink-50 text-sm flex items-center justify-between group" for="edu1"><span>ต่ำกว่าปริญญาตรี</span> <span class="w-4 h-4 rounded-full border border-slate-300 group-hover:border-pink-400 relative check-circle"></span></label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1457844502" id="edu2" value="ปริญญาตรี"><label class="block border border-slate-200 rounded-lg px-4 py-3 cursor-pointer transition-all hover:bg-pink-50 text-sm flex items-center justify-between group" for="edu2"><span>ปริญญาตรี</span> <span class="w-4 h-4 rounded-full border border-slate-300 group-hover:border-pink-400 relative check-circle"></span></label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1457844502" id="edu3" value="สูงกว่าปริญญาตรี"><label class="block border border-slate-200 rounded-lg px-4 py-3 cursor-pointer transition-all hover:bg-pink-50 text-sm flex items-center justify-between group" for="edu3"><span>สูงกว่าปริญญาตรี</span> <span class="w-4 h-4 rounded-full border border-slate-300 group-hover:border-pink-400 relative check-circle"></span></label></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ส่วนที่ 2 -->
+            <div class="glass-panel rounded-2xl shadow-sm p-5 mb-4">
+                <div class="flex items-center gap-2 mb-4 border-b pb-2 border-indigo-100">
+                    <span class="bg-indigo-100 text-indigo-600 px-2 py-1 rounded text-xs font-bold">ส่วนที่ 2</span>
+                    <h2 class="text-base font-semibold text-slate-800">ความพึงพอใจรายด้าน</h2>
+                </div>
+                
+                <div class="flex justify-between text-xs text-slate-400 mb-6 px-2">
+                    <span>น้อยที่สุด (1)</span>
+                    <span>มากที่สุด (5)</span>
+                </div>
+
+                <!-- 2.1 ด้านการออกแบบ -->
+                <div class="bg-indigo-50/50 p-3 rounded-lg mb-4">
+                    <h3 class="font-semibold text-slate-700 text-sm">2.1 ด้านการออกแบบและการใช้งาน</h3>
+                </div>
+
+                <!-- Q1-Q3 -->
+                <div class="mb-8">
+                    <p class="mb-3 text-sm text-slate-700 font-medium">1. การจัดวางเมนู (Rich Menu) สวยงาม อ่านง่าย <span class="text-red-400">*</span></p>
+                    <div class="flex justify-between px-1 rating-group">
+                        <!-- 1-5 -->
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.1641653779" id="q1_1" value="1" required><label for="q1_1" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">1</label></div>
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.1641653779" id="q1_2" value="2"><label for="q1_2" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">2</label></div>
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.1641653779" id="q1_3" value="3"><label for="q1_3" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">3</label></div>
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.1641653779" id="q1_4" value="4"><label for="q1_4" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">4</label></div>
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.1641653779" id="q1_5" value="5"><label for="q1_5" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">5</label></div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <p class="mb-3 text-sm text-slate-700 font-medium">2. ระบบตอบสนองรวดเร็ว ไม่รอนาน <span class="text-red-400">*</span></p>
+                    <div class="flex justify-between px-1 rating-group">
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.313880579" id="q2_1" value="1" required><label for="q2_1" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">1</label></div>
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.313880579" id="q2_2" value="2"><label for="q2_2" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">2</label></div>
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.313880579" id="q2_3" value="3"><label for="q2_3" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">3</label></div>
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.313880579" id="q2_4" value="4"><label for="q2_4" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">4</label></div>
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.313880579" id="q2_5" value="5"><label for="q2_5" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">5</label></div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <p class="mb-3 text-sm text-slate-700 font-medium">3. ค้นหาข้อมูลได้ง่าย ไม่ซับซ้อน <span class="text-red-400">*</span></p>
+                    <div class="flex justify-between px-1 rating-group">
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.1401470892" id="q3_1" value="1" required><label for="q3_1" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">1</label></div>
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.1401470892" id="q3_2" value="2"><label for="q3_2" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">2</label></div>
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.1401470892" id="q3_3" value="3"><label for="q3_3" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">3</label></div>
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.1401470892" id="q3_4" value="4"><label for="q3_4" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">4</label></div>
+                        <div class="text-center"><input class="sr-only" type="radio" name="entry.1401470892" id="q3_5" value="5"><label for="q3_5" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">5</label></div>
+                    </div>
+                </div>
+
+                <!-- 2.2 ด้านเนื้อหา -->
+                <div class="bg-indigo-50/50 p-3 rounded-lg mb-4 mt-6">
+                    <h3 class="font-semibold text-slate-700 text-sm">2.2 ด้านเนื้อหาและบริการเฉพาะด้าน</h3>
+                </div>
+
+                <!-- Q4-Q9 -->
+                <div class="mb-8">
+                    <p class="mb-3 text-sm text-slate-700 font-medium">4. ข้อมูลข่าวสารเป็นปัจจุบัน ทันเหตุการณ์ <span class="text-red-400">*</span></p>
+                    <div class="flex justify-between px-1 rating-group">
+                        <div><input class="sr-only" type="radio" name="entry.1187901899" id="q4_1" value="1" required><label for="q4_1" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">1</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1187901899" id="q4_2" value="2"><label for="q4_2" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">2</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1187901899" id="q4_3" value="3"><label for="q4_3" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">3</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1187901899" id="q4_4" value="4"><label for="q4_4" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">4</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1187901899" id="q4_5" value="5"><label for="q4_5" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">5</label></div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <p class="mb-3 text-sm text-slate-700 font-medium">5. เนื้อหาดูแลเด็กเล็ก (ศพด.) มีประโยชน์ เข้าใจง่าย <span class="text-red-400">*</span></p>
+                    <div class="flex justify-between px-1 rating-group">
+                        <div><input class="sr-only" type="radio" name="entry.1431447015" id="q5_1" value="1" required><label for="q5_1" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">1</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1431447015" id="q5_2" value="2"><label for="q5_2" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">2</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1431447015" id="q5_3" value="3"><label for="q5_3" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">3</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1431447015" id="q5_4" value="4"><label for="q5_4" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">4</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1431447015" id="q5_5" value="5"><label for="q5_5" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">5</label></div>
+                    </div>
+                </div>
+
+                 <div class="mb-8">
+                    <p class="mb-3 text-sm text-slate-700 font-medium">6. ข้อมูลกิจกรรม กีฬา ศาสนา วัฒนธรรม น่าสนใจ <span class="text-red-400">*</span></p>
+                    <div class="flex justify-between px-1 rating-group">
+                        <div><input class="sr-only" type="radio" name="entry.57044395" id="q6_1" value="1" required><label for="q6_1" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">1</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.57044395" id="q6_2" value="2"><label for="q6_2" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">2</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.57044395" id="q6_3" value="3"><label for="q6_3" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">3</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.57044395" id="q6_4" value="4"><label for="q6_4" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">4</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.57044395" id="q6_5" value="5"><label for="q6_5" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">5</label></div>
+                    </div>
+                </div>
+
+                 <div class="mb-8">
+                    <p class="mb-3 text-sm text-slate-700 font-medium">7. ขั้นตอนยืม-คืนอุปกรณ์กีฬาสะดวกกว่าเดิม <span class="text-red-400">*</span></p>
+                    <div class="flex justify-between px-1 rating-group">
+                        <div><input class="sr-only" type="radio" name="entry.1416732107" id="q7_1" value="1" required><label for="q7_1" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">1</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1416732107" id="q7_2" value="2"><label for="q7_2" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">2</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1416732107" id="q7_3" value="3"><label for="q7_3" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">3</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1416732107" id="q7_4" value="4"><label for="q7_4" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">4</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1416732107" id="q7_5" value="5"><label for="q7_5" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">5</label></div>
+                    </div>
+                </div>
+
+                 <div class="mb-8">
+                    <p class="mb-3 text-sm text-slate-700 font-medium">8. การเชื่อมต่อเว็บไซต์กองการศึกษาราบรื่น <span class="text-red-400">*</span></p>
+                    <div class="flex justify-between px-1 rating-group">
+                        <div><input class="sr-only" type="radio" name="entry.1479765990" id="q8_1" value="1" required><label for="q8_1" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">1</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1479765990" id="q8_2" value="2"><label for="q8_2" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">2</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1479765990" id="q8_3" value="3"><label for="q8_3" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">3</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1479765990" id="q8_4" value="4"><label for="q8_4" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">4</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1479765990" id="q8_5" value="5"><label for="q8_5" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">5</label></div>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <p class="mb-3 text-sm text-slate-700 font-medium">9. ช่องทางติดต่อเจ้าหน้าที่หาง่าย สะดวก <span class="text-red-400">*</span></p>
+                    <div class="flex justify-between px-1 rating-group">
+                        <div><input class="sr-only" type="radio" name="entry.1606859238" id="q9_1" value="1" required><label for="q9_1" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">1</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1606859238" id="q9_2" value="2"><label for="q9_2" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">2</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1606859238" id="q9_3" value="3"><label for="q9_3" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">3</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1606859238" id="q9_4" value="4"><label for="q9_4" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">4</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1606859238" id="q9_5" value="5"><label for="q9_5" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">5</label></div>
+                    </div>
+                </div>
+
+            </div>
+
+             <!-- ส่วนที่ 3 -->
+             <div class="glass-panel rounded-2xl shadow-sm p-5 mb-4">
+                <div class="flex items-center gap-2 mb-4 border-b pb-2 border-pink-100">
+                    <span class="bg-pink-100 text-pink-600 px-2 py-1 rounded text-xs font-bold">ส่วนที่ 3</span>
+                    <h2 class="text-base font-semibold text-slate-800">ความพึงพอใจภาพรวม</h2>
+                </div>
+                
+                <!-- Q Overall -->
+                <div class="mb-2">
+                    <p class="mb-3 text-sm text-slate-700 font-medium">1. ภาพรวมความพึงพอใจต่อ LINE Chatbot <span class="text-red-400">*</span></p>
+                    <div class="flex justify-between px-1 rating-group">
+                        <div><input class="sr-only" type="radio" name="entry.1351894536" id="qall_1" value="1" required><label for="qall_1" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">1</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1351894536" id="qall_2" value="2"><label for="qall_2" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">2</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1351894536" id="qall_3" value="3"><label for="qall_3" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">3</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1351894536" id="qall_4" value="4"><label for="qall_4" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">4</label></div>
+                        <div><input class="sr-only" type="radio" name="entry.1351894536" id="qall_5" value="5"><label for="qall_5" class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-200 cursor-pointer text-sm font-medium transition-all shadow-sm">5</label></div>
+                    </div>
+                </div>
+             </div>
+
+             <!-- ส่วนที่ 4 -->
+             <div class="glass-panel rounded-2xl shadow-sm p-5 mb-8">
+                <div class="flex items-center gap-2 mb-4 border-b pb-2 border-indigo-100">
+                    <span class="bg-indigo-100 text-indigo-600 px-2 py-1 rounded text-xs font-bold">ส่วนที่ 4</span>
+                    <h2 class="text-base font-semibold text-slate-800">ข้อเสนอแนะ</h2>
+                </div>
+                <div>
+                    <label class="block mb-2 font-medium text-sm text-slate-600">1. ข้อเสนอแนะอื่นๆ เพื่อการปรับปรุง</label>
+                    <textarea name="entry.1138046900" rows="4" class="w-full p-4 border border-slate-200 rounded-xl bg-slate-50 focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all text-sm" placeholder="พิมพ์ข้อเสนอแนะของคุณที่นี่..."></textarea>
+                </div>
+            </div>
+
+            <!-- Submit Button (Sticky Bottom on Mobile) -->
+            <div class="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur border-t border-slate-100 md:relative md:bg-transparent md:border-0 md:p-0 text-center pb-8 z-40">
+                <button type="submit" id="submitBtn" class="w-full md:w-auto bg-gradient-to-r from-pink-400 to-indigo-400 text-white font-bold py-3.5 px-12 rounded-xl md:rounded-full shadow-lg hover:shadow-xl active:scale-95 transform transition-all text-base">
+                    ส่งแบบประเมิน
+                </button>
+            </div>
+            <!-- Spacer for mobile sticky button -->
+            <div class="h-16 md:hidden"></div>
+
+        </form>
+    </div>
+
+    <!-- Hidden Iframe to handle submission silently -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[60] hidden transition-opacity opacity-0">
+        <div class="bg-white rounded-3xl p-8 max-w-[85%] w-sm text-center shadow-2xl transform scale-90 transition-all duration-300">
+            <div class="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 ring-8 ring-green-50/50">
+                <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-800 mb-2">เรียบร้อย!</h3>
+            <p class="text-slate-500 mb-8">ขอบคุณสำหรับการประเมินครับ</p>
+            <button onclick="closeModal()" class="w-full bg-slate-800 text-white font-medium py-3.5 rounded-xl hover:bg-slate-700 active:scale-95 transition-all">ปิดหน้าต่าง</button>
+        </div>
+    </div>
+
+    <script>
+        var submitted = false;
+        
+        // Add event listener here instead of inline
+        document.getElementById('hidden_iframe').onload = function() {
+            if (submitted) {
+                displaySuccess();
+            }
+        };
+
+        function handleSubmit() {
+            submitted = true;
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> กำลังส่ง...</span>';
+            btn.disabled = true;
+            btn.classList.add('opacity-75', 'cursor-not-allowed');
+            
+            // Fallback time
+            setTimeout(() => {
+                if(submitted) displaySuccess();
+            }, 2000);
+        }
+
+        function displaySuccess() {
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('hidden');
+            // Trigger reflow
+            void modal.offsetWidth; 
+            modal.classList.remove('opacity-0');
+            modal.querySelector('div').classList.remove('scale-90');
+            modal.querySelector('div').classList.add('scale-100');
+            
+            // Reset form
+            document.getElementById('surveyForm').reset();
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = 'ส่งแบบประเมิน';
+            btn.disabled = false;
+            btn.classList.remove('opacity-75', 'cursor-not-allowed');
+            submitted = false;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.add('opacity-0');
+            modal.querySelector('div').classList.add('scale-90');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body>
+</html>
